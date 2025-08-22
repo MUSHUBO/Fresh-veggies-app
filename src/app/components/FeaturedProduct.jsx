@@ -1,10 +1,10 @@
-import dbConnect from '@/library/dbConnect';
+import dbConnect, { collectionNamesObj } from '@/library/dbConnect';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const FeaturedProduct = async () => {
-    const vegetablesCollection = dbConnect("vegetables");
+    const vegetablesCollection = dbConnect(collectionNamesObj.vegetablesCollection);
     const data = await vegetablesCollection.find({}).limit(8).toArray();
 
     return (
@@ -28,7 +28,7 @@ const FeaturedProduct = async () => {
                     {data.map((vg, index) => (
                         <div
                             key={index}
-                            className="col-span-12 md:col-span-6 lg:col-span-3 bg-white rounded-2xl shadow-md hover:shadow-lg border border-green-600 hover:border-green-400 transition-all duration-500 delay-200 hover:scale-105"
+                            className="col-span-12 md:col-span-6 lg:col-span-3 bg-white rounded-2xl shadow-md hover:shadow-lg border border-green-600 hover:border-orange-400 transition-all duration-500 delay-200 hover:scale-105"
                         >
                             {/* Image */}
                             <div className="w-full h-56 overflow-hidden rounded-t-2xl relative">

@@ -1,8 +1,11 @@
-import Image from "next/image";
 import FeaturedProduct from "./components/FeaturedProduct";
+import Hero from "./components/Hero";
 
 export default function Home() {
   return (
-    <FeaturedProduct />
+    <div>
+      <Hero />
+      <FeaturedProduct />
+    </div>
   );
 }
