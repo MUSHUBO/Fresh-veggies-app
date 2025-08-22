@@ -3,13 +3,13 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="bg-white border-t bg-gradient-to-l from-green-100 to-green-200 border-gray-200">
+        <footer className="bg-white border-t bg-gradient-to-bl from-green-50 to-green-100 border-gray-200">
             <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
 
                 {/* Brand Info */}
                 <div>
                     <div className='flex items-center gap-2'>
-                        <Image src={"/assets/Logo.png"} width={50} height={10}/>
+                        <Image src={"/assets/Logo.png"} width={50} height={10} alt="Fresh Veggies Logo" />
                         <h2 className="text-2xl font-extrabold ">Fresh <span className='text-green-500'>Veggies</span></h2>
                     </div>
                     <p className="mt-3 text-gray-700 text-sm leading-relaxed">
@@ -51,7 +51,7 @@ const Footer = () => {
             </div>
 
             {/* Bottom Bar */}
-            <div className="bg-green-800 text-center py-4 text-sm text-white">
+            <div className="bg-green-600 text-center py-4 text-sm text-white">
                 © {new Date().getFullYear()} Fresh Veggies — All Rights Reserved.
             </div>
         </footer>

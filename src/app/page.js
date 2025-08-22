@@ -1,7 +1,8 @@
 import Image from "next/image";
+import FeaturedProduct from "./components/FeaturedProduct";
 
 export default function Home() {
   return (
-    <h1 className="text-2xl text-center place-items-center place-content-center min-h-screen">Hello World</h1>
+    <FeaturedProduct />
   );
 }
