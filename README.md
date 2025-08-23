@@ -1,3 +1,51 @@
+# Fresh Veggies 🍅🥦
+
+--
+
+**Live Link:** [Visit Fresh Veggies Platform](https://fresh-veggies-app.vercel.app/)
+
+---
+
+## Project Overview
+
+**Fresh Veggies** is a simple web application built using **Next.js 15** with the App Router. The app features both public and protected pages with basic authentication handled via **NextAuth.js**. Users can explore the landing page, view product details, and, after logging in, access a protected product management page to add new products.  
+
+This project is ideal for demonstrating Next.js routing, authentication, and protected route handling.
+
+---
+
+## Features
+
+- Landing page with a list of products
+- Product detail pages
+- User authentication with NextAuth.js
+- Protected product management page for logged-in users
+- Add new products functionality
+
+---
+
+## Route Summary
+
+| Route | Type | Description |
+|-------|------|-------------|
+| `/` | Public | Landing page with product listings |
+| `/products/[id]` | Public | View details of a specific product |
+| `/auth/signin` | Public | Sign-in page for users |
+| `/dashboard` | Protected | Product management dashboard (requires login) |
+| `/dashboard/add-product` | Protected | Add new product page (requires login) |
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Authentication:** NextAuth.js
+- **Styling:** Tailwind CSS / Optional CSS frameworks
+- **Hosting:** Vercel
+
+---
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
