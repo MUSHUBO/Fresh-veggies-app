@@ -5,7 +5,7 @@ import Image from 'next/image';
 import React from 'react';
 
 export default async function VegetableDetails({ params }) {
-    const { id } = params;
+    const { id } = await params;
 
     let vegetable = null;
     try {

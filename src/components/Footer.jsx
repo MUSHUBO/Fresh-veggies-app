@@ -1,3 +1,4 @@
+"use client";
 import Image from 'next/image';
 import React from 'react';
 
@@ -9,8 +10,17 @@ const Footer = () => {
                 {/* Brand Info */}
                 <div>
                     <div className='flex items-center gap-2'>
-                        <Image src={"/assets/Logo.png"} width={50} height={10} alt="Fresh Veggies Logo" />
-                        <h2 className="text-2xl font-extrabold ">Fresh <span className='text-green-500'>Veggies</span></h2>
+                        <Image
+                            src="/assets/logo2.png"
+                            width={50}
+                            height={50}      // make it roughly square or correct ratio
+                            alt="Fresh Veggies Logo"
+                            style={{ height: "auto" }} // preserves aspect ratio
+                        />
+                        <h2 className="text-2xl font-extrabold ">
+                            Fresh
+                            <span className='text-green-500'>Veggies</span>
+                        </h2>
                     </div>
                     <p className="mt-3 text-gray-700 text-sm leading-relaxed">
                         Eat fresh, stay healthy. We deliver farm-fresh vegetables straight to your home.

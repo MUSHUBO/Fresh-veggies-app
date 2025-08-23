@@ -8,9 +8,10 @@ const LoginPage = () => {
       {/* Left Image */}
       <div className="hidden md:flex w-1/2 relative">
         <Image
-          src={'/assets/login-form-img.jpg'}
-          alt="Vegetables"
+          src="/assets/login-form-img.jpg"
+          alt="Register Image"
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-opacity-60 flex flex-col items-center justify-center">

@@ -1,3 +1,4 @@
+"use client";
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -40,8 +41,17 @@ const NavBar = () => {
 						</ul>
 					</div>
 					<Link href={"/"} className='flex items-center justify-center ml-2 gap-2'>
-						<Image src={"/assets/logo.ico"} width={40} height={30} alt="Fresh Veggies Logo" />
-						<p className="text-xl font-bold invisible sm:visible">Fresh<span className='text-green-500'>Veggies</span></p>
+						<Image
+							src="/assets/logo2.png"
+							width={50}
+							height={50}      // make it roughly square or correct ratio
+							alt="Fresh Veggies Logo"
+							style={{ height: "auto" }} // preserves aspect ratio
+						/>
+						<p className="text-xl font-bold invisible sm:visible">
+							Fresh
+							<span className='text-green-500'>Veggies</span>
+						</p>
 					</Link>
 				</div>
 				<div className="navbar-center hidden lg:flex ">

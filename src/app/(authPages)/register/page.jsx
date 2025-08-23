@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import RegisterForm from './components/RegisterForm';
 
 const RegisterPage = () => {
   return (
@@ -9,9 +10,10 @@ const RegisterPage = () => {
       {/* Left Image Column */}
       <div className="hidden md:flex w-1/2 relative">
         <Image
-          src={"/assets/login-form-img.jpg"}
+          src="/assets/login-form-img.jpg"
           alt="Register Image"
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-opacity-50 flex flex-col items-center justify-center">
@@ -37,67 +39,7 @@ const RegisterPage = () => {
           </p>
 
           {/* Form */}
-          <form className="space-y-5">
-            {/* Name */}
-            <div>
-              <label className="block text-gray-700 font-medium mb-2" htmlFor="name">
-                Full Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                placeholder="Enter your full name"
-                className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-
-            {/* Email */}
-            <div>
-              <label className="block text-gray-700 font-medium mb-2" htmlFor="email">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                placeholder="Enter your email"
-                className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-
-            {/* Image URL */}
-            <div>
-              <label className="block text-gray-700 font-medium mb-2" htmlFor="image">
-                Profile Image URL
-              </label>
-              <input
-                type="text"
-                id="image"
-                placeholder="Enter image URL"
-                className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-
-            {/* Password */}
-            <div>
-              <label className="block text-gray-700 font-medium mb-2" htmlFor="password">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-
-            {/* Register Button */}
-            <button
-              type="submit"
-              className="w-full bg-green-600 text-white font-medium py-3 rounded-xl hover:bg-green-700 transition"
-            >
-              Register
-            </button>
-          </form>
+          <RegisterForm />
 
           {/* Extra Links */}
           <p className="text-center text-gray-500 mt-4">

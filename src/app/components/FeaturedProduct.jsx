@@ -36,6 +36,7 @@ const FeaturedProduct = async () => {
                                     src={vg.image}
                                     alt={vg.name}
                                     fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     className="object-cover hover:scale-105 transition-transform duration-400"
                                     priority
                                 />
