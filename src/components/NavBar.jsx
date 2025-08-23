@@ -26,7 +26,7 @@ const NavBar = () => {
 	}
 
 	return (
-		<div className='rounded-lg bg-gradient-to-tr from-green-50 to-green-100'>
+		<div className='rounded-lg bg-gradient-to-t from-[#f6f8fa] to-green-100'>
 			<div className='navbar w-11/12 mx-auto'>
 				<div className="navbar-start">
 					<div className="dropdown">
@@ -60,7 +60,9 @@ const NavBar = () => {
 					</div>
 
 					{/* login button */}
-					<a className="btn bg-green-400 hover:bg-green-500 rounded-md ">Login</a>
+					<Link href={"/login"}>
+						<button className="btn bg-green-400 hover:bg-green-500 rounded-md ">Login</button>
+					</Link>
 				</div>
 			</div>
 		</div>

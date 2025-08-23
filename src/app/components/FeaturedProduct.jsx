@@ -5,7 +5,7 @@ import React from 'react';
 
 const FeaturedProduct = async () => {
     const vegetablesCollection = dbConnect(collectionNamesObj.vegetablesCollection);
-    const data = await vegetablesCollection.find({}).limit(8).toArray();
+    const data = await vegetablesCollection.find().limit(8).toArray();
 
     return (
         <div className="my-24">
@@ -59,7 +59,8 @@ const FeaturedProduct = async () => {
                                 {/* Details Link */}
                                 <Link
                                     href={`/vegetables/${vg._id}`}
-                                    className="inline-block px-4 py-2 mt-2 text-sm font-medium text-white bg-gradient-to-br from-green-700 to-green-600 rounded-lg hover:bg-green-700 transition"
+                                    prefetch={true}
+                                    className="inline-block px-4 py-2 mt-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 transition"
                                 >
                                     View Details
                                 </Link>
