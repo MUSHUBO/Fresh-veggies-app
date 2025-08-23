@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import LoginForm from './components/LoginForm';
 
 const LoginPage = () => {
   return (
@@ -33,41 +34,7 @@ const LoginPage = () => {
           </h2>
 
           {/* Form */}
-          <form className="space-y-5">
-            {/* Email */}
-            <div>
-              <label className="block text-gray-700 font-medium mb-2" htmlFor="email">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                placeholder="Enter your email"
-                className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-
-            {/* Password */}
-            <div>
-              <label className="block text-gray-700 font-medium mb-2" htmlFor="password">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-
-            {/* Login Button */}
-            <button
-              type="submit"
-              className="w-full bg-green-600 text-white font-medium py-3 rounded-xl hover:bg-green-700 transition"
-            >
-              Login
-            </button>
-          </form>
+          <LoginForm></LoginForm>
 
           {/* Extra Links */}
           <p className="text-center text-gray-500 mt-4">

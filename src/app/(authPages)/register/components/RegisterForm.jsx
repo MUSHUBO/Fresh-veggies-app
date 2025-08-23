@@ -1,8 +1,11 @@
 "use client"
 import { registerUser } from '@/app/actions/auth/registerUser';
+import { useRouter } from 'next/navigation';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const RegisterForm = () => {
+  const router = useRouter();
 
   const handleRegister = async (e) => {
     e.preventDefault()
@@ -11,7 +14,9 @@ const RegisterForm = () => {
     const email = form.email.value;
     const image = form.image.value;
     const password = form.password.value;
-    await registerUser({name, email, image, password});
+    await registerUser({ name, email, image, password });
+    toast.success("Successfully Create Account");
+    router.push("/")
   }
 
   return (

@@ -1,7 +1,5 @@
 # Fresh Veggies 🍅🥦
 
---
-
 **Live Link:** [Visit Fresh Veggies Platform](https://fresh-veggies-app.vercel.app/)
 
 ---
