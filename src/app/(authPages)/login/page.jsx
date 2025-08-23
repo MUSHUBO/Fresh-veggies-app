@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const LoginPage = () => {
   return (
@@ -70,9 +71,9 @@ const LoginPage = () => {
           {/* Extra Links */}
           <p className="text-center text-gray-500 mt-4">
             Don't have an account?{" "}
-            <a href="/register" className="text-green-600 font-medium hover:underline">
+            <Link href="/register" className="text-green-600 font-medium hover:underline">
               Sign Up
-            </a>
+            </Link>
           </p>
         </div>
       </div>
