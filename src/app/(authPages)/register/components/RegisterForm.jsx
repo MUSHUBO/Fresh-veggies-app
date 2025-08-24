@@ -1,5 +1,6 @@
 "use client"
 import { registerUser } from '@/app/actions/auth/registerUser';
+import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import toast from 'react-hot-toast';
@@ -14,9 +15,30 @@ const RegisterForm = () => {
     const email = form.email.value;
     const image = form.image.value;
     const password = form.password.value;
-    await registerUser({ name, email, image, password });
-    toast.success("Successfully Create Account");
-    router.push("/")
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      toast.error("Password must be at least 6 characters and include both uppercase & lowercase letters");
+      return;
+    }
+
+    const toastId = toast.loading("Creating account...");
+
+    try {
+      const result = await registerUser({ name, email, image, password });
+
+      if (result?.insertedId) {
+        await signIn("credentials", { email, password, redirect: false });
+        toast.success("Account created successfully!", { id: toastId });
+        form.reset();
+        router.push("/");
+      } else {
+        toast.error("Email already registered!", { id: toastId });
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to create account", { id: toastId });
+    }
   }
 
   return (
@@ -31,6 +53,7 @@ const RegisterForm = () => {
           name="name"
           placeholder="Enter your full name"
           className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+          required
         />
       </div>
 
@@ -44,6 +67,7 @@ const RegisterForm = () => {
           name="email"
           placeholder="Enter your email"
           className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+          required
         />
       </div>
 
@@ -57,6 +81,7 @@ const RegisterForm = () => {
           name="image"
           placeholder="Enter image URL"
           className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+          required
         />
       </div>
 
@@ -70,7 +95,11 @@ const RegisterForm = () => {
           name="password"
           placeholder="Enter your password"
           className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+          required
         />
+        <p className="text-sm text-gray-500 mt-1">
+          Password must be at least 6 characters, include uppercase and lowercase letters.
+        </p>
       </div>
 
       {/* Register Button */}

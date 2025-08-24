@@ -1,25 +1,35 @@
 "use client";
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const NavBar = () => {
+	const { data: session, status } = useSession();
+	console.log(session?.user?.image);
+
+	const handleLogout = () => {
+		toast.success("Logged out successfully!");
+		signOut();
+	};
+
 	const nevMenu = () => {
 		return (
 			<>
-				<li>
+				<li className='hover:text-green-500 transition'>
 					<Link href={"/"}>Home</Link>
 				</li>
-				<li>
+				<li className='hover:text-green-500 transition'>
 					<Link href={"/about"}>About</Link>
 				</li>
-				<li>
+				<li className='hover:text-green-500 transition'>
 					<Link href={"/services"}>Products</Link>
 				</li>
-				<li>
+				<li className='hover:text-green-500 transition'>
 					<Link href={"/blogs"}>Blogs</Link>
 				</li>
-				<li>
+				<li className='hover:text-green-500 transition'>
 					<Link href={"/contact"}>Contact</Link>
 				</li>
 			</>
@@ -36,7 +46,7 @@ const NavBar = () => {
 						</div>
 						<ul
 							tabIndex={0}
-							className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+							className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
 							{nevMenu()}
 						</ul>
 					</div>
@@ -61,18 +71,48 @@ const NavBar = () => {
 				</div>
 				<div className="navbar-end flex items-center gap-3">
 					{/* avatar */}
-					<div className="tooltip tooltip-bottom">
-						<img
-							className='w-10 h-10 rounded-full object-cover cursor-pointer'
-							src={"/assets/avatar.png"}
-							alt=""
-						/>
-					</div>
+					{
+						status === 'authenticated' ?
+							(<>
+								<div className="tooltip tooltip-bottom" data-tip={session?.user?.name || "Guest"}>
+									<img
+										className="w-10 h-10 rounded-full object-cover cursor-pointer"
+										src={session?.user?.image || "/assets/avatar.png"}
+										alt={session?.user?.name || "Guest"}
+									/>
+								</div>
+							</>)
+							:
+							(<>
+								<div className="tooltip tooltip-bottom">
+									<img
+										className='w-10 h-10 rounded-full object-cover cursor-pointer'
+										src={"/assets/avatar.png"}
+										alt=""
+									/>
+								</div>
+							</>)
+					}
 
 					{/* login button */}
-					<Link href={"/login"}>
-						<button className="btn bg-green-400 hover:bg-green-500 rounded-md ">Login</button>
-					</Link>
+					{
+						status === 'authenticated' ?
+							(<>
+								<button
+									onClick={handleLogout}
+									className='btn btn-outline rounded-md text-black border-2 border-green-400 hover:border-orange-500'>
+									Log-out
+								</button>
+							</>)
+							:
+							(<>
+								<Link href={"/login"}>
+									<button className="btn bg-green-400 hover:bg-green-500 rounded-md ">
+										Login
+									</button>
+								</Link>
+							</>)
+					}
 				</div>
 			</div>
 		</div>

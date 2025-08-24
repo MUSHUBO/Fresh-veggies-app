@@ -13,28 +13,30 @@ const LoginForm = () => {
     const email = form.email.value;
     const password = form.password.value
 
-    toast("Submitting....")
+    const toastId = toast.loading("Submitting...");
 
     try {
       const response = await signIn("credentials", {
         email,
         password,
-        callbackUrl: "/",
-        redirect: false
+        redirect: false,
       });
 
       if (response.ok) {
-        toast.success("Logged In Successfully");
-        router.push("/");
-        form.reset();
-      } else {
-        toast.error("Failed to Logged In");
+        toast.success("Logged in successfully!", { id: toastId });
+        form.reset(); // reset form after success
+        router.push("/"); // redirect to home
       }
-
-      // console.log({ email, password });
+      // else if (response.error) {
+      //   // custom error message from NextAuth authorize()
+      //   toast.error(response.error, { id: toastId });
+      // }
+      else {
+        toast.error("Invalid email or password", { id: toastId });
+      }
     } catch (error) {
-      toast.error("Failed to Logged In");
-      console.error(error);
+      console.error("Login error:", error);
+      toast.error("Something went wrong", { id: toastId });
     }
   }
 
@@ -50,6 +52,7 @@ const LoginForm = () => {
           name="email"
           placeholder="Enter your email"
           className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+          required
         />
       </div>
 
@@ -63,6 +66,7 @@ const LoginForm = () => {
           name="password"
           placeholder="Enter your password"
           className="w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+          required
         />
       </div>
 
